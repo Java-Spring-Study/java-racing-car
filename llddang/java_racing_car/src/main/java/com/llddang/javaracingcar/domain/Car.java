@@ -2,18 +2,18 @@ package com.llddang.javaracingcar.domain;
 
 public class Car {
   private String name;
-  private String movement = "";
+  private StringBuilder movement = new StringBuilder("");
 
   public Car(String name){
     this.name = name;
   }
 
   public void MoveOneStep(){
-    movement += "-";
+    movement.append("-");
   }
 
   public String getMovement(){
-    return movement;
+    return movement.toString();
   }
 
   public String getName(){

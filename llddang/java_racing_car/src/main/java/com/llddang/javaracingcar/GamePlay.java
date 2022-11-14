@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class GamePlay {
-
+  final GameValidator gameValidator = new GameValidator();
   final static Scanner scanner = new Scanner(System.in);
   private List<Car> carList;
   private int tryCount;
@@ -25,7 +25,7 @@ public class GamePlay {
     String carNames = scanner.next();
     String[] cars = carNames.split(",");
 
-    while (GameValidator.isInvalidCarName(cars)) {
+    while (gameValidator.isInvalidCarName(cars)) {
       printErrorMessage();
       carNames = scanner.next();
       cars = carNames.split(",");
@@ -40,7 +40,7 @@ public class GamePlay {
     System.out.println("시도할 회수는 몇 회인가요?");
     String tryCount = scanner.next();
 
-    while (GameValidator.isInvalidTryCount(tryCount)) {
+    while (gameValidator.isInvalidTryCount(tryCount)) {
       printErrorMessage();
       tryCount = scanner.next();
     }
@@ -75,7 +75,7 @@ public class GamePlay {
 
   private int getRandomNumber() {
     Random random = new Random();
-    return random.nextInt() % 10;
+    return random.nextInt(10);
   }
 
   private void printCarState() {
