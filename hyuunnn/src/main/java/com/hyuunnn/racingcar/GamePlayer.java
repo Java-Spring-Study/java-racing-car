@@ -8,9 +8,12 @@ import java.util.stream.Collectors;
 
 public class GamePlayer {
 
-  private final int MAX_LENGTH = 5;
-  private final int RANDOM_MIN_NUMBER = 4;
-  private final Scanner scanner = new Scanner(System.in);
+  private static final int MAX_LENGTH = 5;
+  private static final int RANDOM_MIN_NUMBER = 4;
+
+  private static final String SEPARATOR = ",";
+  private static final String PROGRESS_BAR = "-";
+  private static final Scanner scanner = new Scanner(System.in);
   private List<Car> carList;
 
   private int randomize() {
@@ -22,7 +25,7 @@ public class GamePlayer {
     System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
     String inputValue = scanner.nextLine();
-    String[] strCarList = inputValue.split(",");
+    String[] strCarList = inputValue.split(SEPARATOR);
 
     validateLength(strCarList);
     addCarName(strCarList);
@@ -57,7 +60,8 @@ public class GamePlayer {
   }
 
   private void printStatus() {
-    carList.forEach(e -> System.out.printf("%s : %s\n", e.getName(), "-".repeat(e.getPosition())));
+    carList.forEach(
+        e -> System.out.printf("%s : %s\n", e.getName(), PROGRESS_BAR.repeat(e.getPosition())));
     System.out.print("\n");
   }
 
@@ -66,7 +70,7 @@ public class GamePlayer {
 
     System.out.print("최종 우승자: ");
     System.out.printf(carList.stream().filter(e -> maxPosition == e.getPosition()).map(Car::getName)
-        .collect(Collectors.joining(",")));
+        .collect(Collectors.joining(SEPARATOR)));
   }
 
   public void run() {
