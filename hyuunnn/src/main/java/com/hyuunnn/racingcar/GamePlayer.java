@@ -10,11 +10,10 @@ public class GamePlayer {
 
   private static final int MAX_LENGTH = 5;
   private static final int RANDOM_MIN_NUMBER = 4;
-
   private static final String SEPARATOR = ",";
   private static final String PROGRESS_BAR = "-";
   private static final Scanner scanner = new Scanner(System.in);
-  private List<Car> carList;
+  private static List<Car> carList;
 
   private int randomize() {
     Random r = new Random();
