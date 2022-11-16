@@ -37,7 +37,7 @@ public class GamePlayer {
       String[] strCarList = strInputNames.split(SEPARATOR);
 
       validateLength(strCarList);
-      carList = initializeCarName(strCarList);
+      carList = initializeCarList(strCarList);
 
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -53,7 +53,7 @@ public class GamePlayer {
     }
   }
 
-  private List<Car> initializeCarName(String[] strList) {
+  private List<Car> initializeCarList(String[] strList) {
     return Arrays.stream(strList)
         .map(Car::new)
         .toList();
