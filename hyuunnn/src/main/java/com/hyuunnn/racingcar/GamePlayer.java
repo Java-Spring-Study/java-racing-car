@@ -23,7 +23,7 @@ public class GamePlayer {
 
   private void input() {
     System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-    while (inputCarName() == false)
+    while (inputCarNames() == false)
       ;
 
     System.out.println("시도할 회수는 몇회인가요?");
@@ -31,10 +31,10 @@ public class GamePlayer {
       ;
   }
 
-  private boolean inputCarName() {
+  private boolean inputCarNames() {
     try {
-      String strInputValue = SCANNER.nextLine();
-      String[] strCarList = strInputValue.split(SEPARATOR);
+      String strInputNames = SCANNER.nextLine();
+      String[] strCarList = strInputNames.split(SEPARATOR);
 
       validateLength(strCarList);
       carList = initializeCarName(strCarList);
@@ -65,7 +65,7 @@ public class GamePlayer {
       this.count = Integer.parseInt(strInputCount);
 
     } catch (NumberFormatException e) {
-      System.out.println("[ERROR] 입력 값이 숫자가 아닙니다.");
+      System.out.println("[ERROR] 입력 값이 유효하지 않습니다.");
       return false;
     }
     return true;
