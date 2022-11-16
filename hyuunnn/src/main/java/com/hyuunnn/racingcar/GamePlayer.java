@@ -69,7 +69,7 @@ public class GamePlayer {
 
     System.out.print("최종 우승자: ");
     System.out.printf(carList.stream().filter(e -> maxPosition == e.getPosition()).map(Car::getName)
-        .collect(Collectors.joining(SEPARATOR)));
+        .collect(Collectors.joining(String.format("%s ", SEPARATOR))));
   }
 
   public void run() {
