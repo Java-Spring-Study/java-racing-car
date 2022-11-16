@@ -14,19 +14,24 @@ import java.util.stream.Collectors;
 public class GamePlayer {
 
   private static List<Car> carList;
+  private int count = 0;
 
   private int randomize() {
     Random r = new Random();
     return r.nextInt(9);
   }
 
-  private void inputCarName() {
+  private void input() {
     System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-    while (setCarName() == false)
+    while (inputCarName() == false)
+      ;
+
+    System.out.println("시도할 회수는 몇회인가요?");
+    while (inputCount() == false)
       ;
   }
 
-  private boolean setCarName() {
+  private boolean inputCarName() {
     try {
       String inputValue = SCANNER.nextLine();
       String[] strCarList = inputValue.split(SEPARATOR);
@@ -54,15 +59,22 @@ public class GamePlayer {
         .toList();
   }
 
-  private int inputCount() {
-    System.out.println("시도할 회수는 몇회인가요?");
-    return SCANNER.nextInt();
+  private boolean inputCount() {
+    try {
+      String strCount = SCANNER.nextLine();
+      this.count = Integer.parseInt(strCount);
+
+    } catch (NumberFormatException e) {
+      System.out.println("[ERROR] 입력 값이 숫자가 아닙니다.");
+      return false;
+    }
+    return true;
   }
 
-  private void printResult(int count) {
+  private void printResult() {
     System.out.println("실행 결과");
 
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < this.count; i++) {
       addMoveCount();
       printStatus();
     }
@@ -95,8 +107,8 @@ public class GamePlayer {
   }
 
   public void run() {
-    inputCarName();
-    printResult(inputCount());
+    input();
+    printResult();
     printWinner();
   }
 }
