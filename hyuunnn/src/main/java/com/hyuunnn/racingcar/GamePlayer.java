@@ -22,12 +22,23 @@ public class GamePlayer {
 
   private void inputCarName() {
     System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+    while (setCarName() == false)
+      ;
+  }
 
-    String inputValue = SCANNER.nextLine();
-    String[] strCarList = inputValue.split(SEPARATOR);
+  private boolean setCarName() {
+    try {
+      String inputValue = SCANNER.nextLine();
+      String[] strCarList = inputValue.split(SEPARATOR);
 
-    validateLength(strCarList);
-    carList = initializeCarName(strCarList);
+      validateLength(strCarList);
+      carList = initializeCarName(strCarList);
+
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+      return false;
+    }
+    return true;
   }
 
   private void validateLength(String[] strList) {
