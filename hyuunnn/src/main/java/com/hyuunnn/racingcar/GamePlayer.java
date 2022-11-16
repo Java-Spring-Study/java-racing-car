@@ -40,7 +40,7 @@ public class GamePlayer {
   private List<Car> initializeCarName(String[] strList) {
     return Arrays.stream(strList)
         .map(Car::new)
-        .collect(Collectors.toList());
+        .toList();
   }
 
   private int inputCount() {
