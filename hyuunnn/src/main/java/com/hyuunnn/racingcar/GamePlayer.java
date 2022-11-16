@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class GamePlayer {
 
-  private static List<Car> carList;
+  private List<Car> carList;
   private int count = 0;
 
   private int randomize() {
