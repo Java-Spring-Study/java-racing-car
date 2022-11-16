@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class GamePlayer {
+
   private static List<Car> carList;
 
   private int randomize() {
@@ -58,8 +59,8 @@ public class GamePlayer {
   }
 
   private void printStatus() {
-    carList.forEach(
-        e -> System.out.printf("%s : %s\n", e.getName(), PROGRESS_BAR.repeat(e.getPosition())));
+    carList.forEach(car -> System.out.printf("%s : %s\n", car.getName(),
+        PROGRESS_BAR.repeat(car.getPosition())));
     System.out.print("\n");
   }
 
@@ -67,8 +68,9 @@ public class GamePlayer {
     int maxPosition = carList.stream().map(Car::getPosition).reduce(Integer::max).orElse(-1);
 
     System.out.print("최종 우승자: ");
-    System.out.printf(carList.stream().filter(e -> maxPosition == e.getPosition()).map(Car::getName)
-        .collect(Collectors.joining(String.format("%s ", SEPARATOR))));
+    System.out.printf(
+        carList.stream().filter(car -> maxPosition == car.getPosition()).map(Car::getName)
+            .collect(Collectors.joining(String.format("%s ", SEPARATOR))));
   }
 
   public void run() {
