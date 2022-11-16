@@ -1,18 +1,17 @@
 package com.hyuunnn.racingcar;
 
-import java.util.List;
-import java.util.Scanner;
-import java.util.Random;
+import static com.hyuunnn.racingcar.Util.SEPARATOR;
+import static com.hyuunnn.racingcar.Util.PROGRESS_BAR;
+import static com.hyuunnn.racingcar.Util.MAX_LENGTH;
+import static com.hyuunnn.racingcar.Util.RANDOM_MIN_NUMBER;
+import static com.hyuunnn.racingcar.Util.SCANNER;
+
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class GamePlayer {
-
-  private static final int MAX_LENGTH = 5;
-  private static final int RANDOM_MIN_NUMBER = 4;
-  private static final String SEPARATOR = ",";
-  private static final String PROGRESS_BAR = "-";
-  private static final Scanner scanner = new Scanner(System.in);
   private static List<Car> carList;
 
   private int randomize() {
@@ -23,7 +22,7 @@ public class GamePlayer {
   private void inputCarName() {
     System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
 
-    String inputValue = scanner.nextLine();
+    String inputValue = SCANNER.nextLine();
     String[] strCarList = inputValue.split(SEPARATOR);
 
     validateLength(strCarList);
@@ -42,7 +41,7 @@ public class GamePlayer {
 
   private int inputCount() {
     System.out.println("시도할 회수는 몇회인가요?");
-    return scanner.nextInt();
+    return SCANNER.nextInt();
   }
 
   private void printResult(int count) {
