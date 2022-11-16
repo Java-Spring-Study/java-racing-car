@@ -27,7 +27,7 @@ public class GamePlayer {
     String[] strCarList = inputValue.split(SEPARATOR);
 
     validateLength(strCarList);
-    addCarName(strCarList);
+    carList = initializeCarName(strCarList);
   }
 
   private void validateLength(String[] strList) {
@@ -36,8 +36,8 @@ public class GamePlayer {
     }
   }
 
-  private void addCarName(String[] strList) {
-    carList = Arrays.stream(strList).map(Car::new).collect(Collectors.toList());
+  private List<Car> initializeCarName(String[] strList) {
+    return Arrays.stream(strList).map(Car::new).collect(Collectors.toList());
   }
 
   private int inputCount() {
