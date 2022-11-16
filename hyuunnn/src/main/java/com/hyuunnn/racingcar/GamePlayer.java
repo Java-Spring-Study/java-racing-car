@@ -62,7 +62,7 @@ public class GamePlayer {
   private boolean inputCount() {
     try {
       String strInputCount = SCANNER.nextLine();
-      this.count = Integer.parseInt(strInputCount);
+      count = Integer.parseInt(strInputCount);
 
     } catch (NumberFormatException e) {
       System.out.println("[ERROR] 입력 값이 유효하지 않습니다.");
@@ -74,7 +74,7 @@ public class GamePlayer {
   private void printResult() {
     System.out.println("실행 결과");
 
-    for (int i = 0; i < this.count; i++) {
+    for (int i = 0; i < count; i++) {
       addMoveCount();
       printStatus();
     }
