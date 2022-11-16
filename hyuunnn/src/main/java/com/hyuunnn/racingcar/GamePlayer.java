@@ -110,5 +110,6 @@ public class GamePlayer {
     input();
     printResult();
     printWinner();
+    SCANNER.close();
   }
 }
