@@ -33,8 +33,8 @@ public class GamePlayer {
 
   private boolean inputCarName() {
     try {
-      String inputValue = SCANNER.nextLine();
-      String[] strCarList = inputValue.split(SEPARATOR);
+      String strInputValue = SCANNER.nextLine();
+      String[] strCarList = strInputValue.split(SEPARATOR);
 
       validateLength(strCarList);
       carList = initializeCarName(strCarList);
@@ -61,8 +61,8 @@ public class GamePlayer {
 
   private boolean inputCount() {
     try {
-      String strCount = SCANNER.nextLine();
-      this.count = Integer.parseInt(strCount);
+      String strInputCount = SCANNER.nextLine();
+      this.count = Integer.parseInt(strInputCount);
 
     } catch (NumberFormatException e) {
       System.out.println("[ERROR] 입력 값이 숫자가 아닙니다.");
