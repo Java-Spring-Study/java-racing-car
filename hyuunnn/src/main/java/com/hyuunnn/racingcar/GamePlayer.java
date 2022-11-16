@@ -31,13 +31,16 @@ public class GamePlayer {
   }
 
   private void validateLength(String[] strList) {
-    if (Arrays.stream(strList).anyMatch(str -> str.length() == 0 || str.length() > MAX_LENGTH)) {
+    if (Arrays.stream(strList)
+        .anyMatch(str -> str.length() == 0 || str.length() > MAX_LENGTH)) {
       throw new IllegalStateException("[ERROR] 입력 가능 길이가 맞지 않습니다.");
     }
   }
 
   private List<Car> initializeCarName(String[] strList) {
-    return Arrays.stream(strList).map(Car::new).collect(Collectors.toList());
+    return Arrays.stream(strList)
+        .map(Car::new)
+        .collect(Collectors.toList());
   }
 
   private int inputCount() {
@@ -55,22 +58,29 @@ public class GamePlayer {
   }
 
   private void addMoveCount() {
-    carList.stream().filter(e -> randomize() >= RANDOM_MIN_NUMBER).forEach(Car::addPosition);
+    carList.stream()
+        .filter(e -> randomize() >= RANDOM_MIN_NUMBER)
+        .forEach(Car::addPosition);
   }
 
   private void printStatus() {
-    carList.forEach(car -> System.out.printf("%s : %s\n", car.getName(),
-        PROGRESS_BAR.repeat(car.getPosition())));
+    carList.forEach(car ->
+        System.out.printf("%s : %s\n", car.getName(),
+            PROGRESS_BAR.repeat(car.getPosition())));
     System.out.print("\n");
   }
 
   private void printWinner() {
-    int maxPosition = carList.stream().map(Car::getPosition).reduce(Integer::max).orElse(-1);
+    int maxPosition = carList.stream()
+        .map(Car::getPosition)
+        .reduce(Integer::max)
+        .orElse(-1);
 
     System.out.print("최종 우승자: ");
-    System.out.printf(
-        carList.stream().filter(car -> maxPosition == car.getPosition()).map(Car::getName)
-            .collect(Collectors.joining(String.format("%s ", SEPARATOR))));
+    System.out.printf(carList.stream()
+        .filter(car -> maxPosition == car.getPosition())
+        .map(Car::getName)
+        .collect(Collectors.joining(String.format("%s ", SEPARATOR))));
   }
 
   public void run() {
