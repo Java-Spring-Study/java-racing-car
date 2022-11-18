@@ -18,6 +18,13 @@ public class GamePlayer {
   private List<Car> carList;
   private int count = 0;
 
+  public void run() {
+    input();
+    printResult();
+    printWinner();
+    SCANNER.close();
+  }
+
   private void input() {
     System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
     while (inputCarNames() == InputType.INVALID)
@@ -95,12 +102,5 @@ public class GamePlayer {
         .filter(car -> maxPosition == car.getPosition())
         .map(Car::getName)
         .collect(Collectors.joining(String.format("%s ", SEPARATOR))));
-  }
-
-  public void run() {
-    input();
-    printResult();
-    printWinner();
-    SCANNER.close();
   }
 }
