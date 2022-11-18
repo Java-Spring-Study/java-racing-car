@@ -2,10 +2,10 @@ package com.hyuunnn.racingcar;
 
 import static com.hyuunnn.racingcar.Util.SEPARATOR;
 import static com.hyuunnn.racingcar.Util.PROGRESS_BAR;
-import static com.hyuunnn.racingcar.Util.MAX_LENGTH;
 import static com.hyuunnn.racingcar.Util.RANDOM_MIN_NUMBER;
 import static com.hyuunnn.racingcar.Util.SCANNER;
 import static com.hyuunnn.racingcar.Util.randomize;
+import static com.hyuunnn.racingcar.Error.validateLength;
 
 import com.hyuunnn.racingcar.Util.InputType;
 
@@ -43,12 +43,6 @@ public class GamePlayer {
     return InputType.VALID;
   }
 
-  private void validateLength(String[] strList) {
-    if (Arrays.stream(strList)
-        .anyMatch(str -> str.length() == 0 || str.length() > MAX_LENGTH)) {
-      throw new IllegalStateException("[ERROR] 입력 가능 길이가 맞지 않습니다.");
-    }
-  }
 
   private List<Car> initializeCarList(String[] strList) {
     return Arrays.stream(strList)
