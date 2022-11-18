@@ -13,7 +13,7 @@ public class GameValidator {
   }
 
   private boolean invalidateCarNameLength(String car){
-    return car.length() <= MAXLENGTH || car.length() == 0;
+    return car.length() > MAXLENGTH || car.length() == 0;
   }
 
   public boolean isInvalidTryCount(String tryCount) {
