@@ -5,6 +5,7 @@ import static com.hyuunnn.racingcar.Util.PROGRESS_BAR;
 import static com.hyuunnn.racingcar.Util.MAX_LENGTH;
 import static com.hyuunnn.racingcar.Util.RANDOM_MIN_NUMBER;
 import static com.hyuunnn.racingcar.Util.SCANNER;
+import static com.hyuunnn.racingcar.Util.randomize;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,11 +16,6 @@ public class GamePlayer {
 
   private List<Car> carList;
   private int count = 0;
-
-  private int randomize() {
-    Random r = new Random();
-    return r.nextInt(9);
-  }
 
   private void input() {
     System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");

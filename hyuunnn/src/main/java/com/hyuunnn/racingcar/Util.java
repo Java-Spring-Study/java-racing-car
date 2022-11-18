@@ -1,5 +1,6 @@
 package com.hyuunnn.racingcar;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Util {
@@ -9,4 +10,9 @@ public class Util {
   public static final String SEPARATOR = ",";
   public static final String PROGRESS_BAR = "-";
   public static final Scanner SCANNER = new Scanner(System.in);
+
+  public static int randomize() {
+    Random r = new Random();
+    return r.nextInt(9);
+  }
 }
