@@ -15,4 +15,6 @@ public class Util {
     Random r = new Random();
     return r.nextInt(9);
   }
+
+  enum InputType {VALID, INVALID}
 }

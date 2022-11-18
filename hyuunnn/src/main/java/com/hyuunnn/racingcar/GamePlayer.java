@@ -7,9 +7,10 @@ import static com.hyuunnn.racingcar.Util.RANDOM_MIN_NUMBER;
 import static com.hyuunnn.racingcar.Util.SCANNER;
 import static com.hyuunnn.racingcar.Util.randomize;
 
+import com.hyuunnn.racingcar.Util.InputType;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class GamePlayer {
@@ -19,15 +20,15 @@ public class GamePlayer {
 
   private void input() {
     System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-    while (inputCarNames() == false)
+    while (inputCarNames() == InputType.INVALID)
       ;
 
     System.out.println("시도할 회수는 몇회인가요?");
-    while (inputCount() == false)
+    while (inputCount() == InputType.INVALID)
       ;
   }
 
-  private boolean inputCarNames() {
+  private InputType inputCarNames() {
     try {
       String strInputNames = SCANNER.nextLine();
       String[] strCarList = strInputNames.split(SEPARATOR);
@@ -37,9 +38,9 @@ public class GamePlayer {
 
     } catch (Exception e) {
       System.out.println(e.getMessage());
-      return false;
+      return InputType.INVALID;
     }
-    return true;
+    return InputType.VALID;
   }
 
   private void validateLength(String[] strList) {
@@ -55,16 +56,16 @@ public class GamePlayer {
         .toList();
   }
 
-  private boolean inputCount() {
+  private InputType inputCount() {
     try {
       String strInputCount = SCANNER.nextLine();
       count = Integer.parseInt(strInputCount);
 
     } catch (NumberFormatException e) {
       System.out.println("[ERROR] 입력 값이 유효하지 않습니다.");
-      return false;
+      return InputType.INVALID;
     }
-    return true;
+    return InputType.VALID;
   }
 
   private void printResult() {
