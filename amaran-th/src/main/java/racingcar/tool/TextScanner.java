@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class TextScanner {
 
-  public static String[] scanCarName() {
+  public String[] scanCarName() {
     String carNames = Console.readLine();
     String[] carNameList = carNames.split(",");
     try {
@@ -17,7 +17,7 @@ public class TextScanner {
 
   }
 
-  public static int scanRoundN() {
+  public int scanRoundN() {
     String input = Console.readLine();
     try {
       int roundN = RacingTool.checkRoundN(input);

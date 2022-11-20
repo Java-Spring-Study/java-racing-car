@@ -9,6 +9,9 @@ import racingcar.tool.TextScanner;
 
 public class GameController {
 
+  TextPrinter textPrinter = new TextPrinter();
+  TextScanner textScanner = new TextScanner();
+  RacingTool racingTool = new RacingTool();
   List<Car> carList = new ArrayList<Car>();
   List<String> winnerList = new ArrayList<String>();
   int roundN = 0;
@@ -16,15 +19,15 @@ public class GameController {
   public void gameStart() {
     try {
       //초기설정
-      TextPrinter.printInit();
-      setCarList(TextScanner.scanCarName());
-      TextPrinter.printQuestion();
-      setRoundN(TextScanner.scanRoundN());
+      textPrinter.printInit();
+      setCarList(textScanner.scanCarName());
+      textPrinter.printQuestion();
+      setRoundN(textScanner.scanRoundN());
       //라운드 실행
       runRounds();
       //우승자 출력
       pickWinners();
-      TextPrinter.printWinner(winnerList);
+      textPrinter.printWinner(winnerList);
     } catch (IllegalArgumentException e) {
       TextPrinter.printError(e);
     }
@@ -48,9 +51,9 @@ public class GameController {
 
   public void runRound() {
     for (int i = 0; i < carList.size(); i++) {
-      carList.get(i).behave(RacingTool.isGoAhead());
+      carList.get(i).behave(racingTool.isGoAhead());
     }
-    TextPrinter.printRound(carList);
+    textPrinter.printRound(carList);
   }
 
   public void pickWinners() {

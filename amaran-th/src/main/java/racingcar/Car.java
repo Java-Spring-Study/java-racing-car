@@ -1,7 +1,5 @@
 package racingcar;
 
-import racingcar.tool.RacingTool;
-
 public class Car {
 
   private final String name;
