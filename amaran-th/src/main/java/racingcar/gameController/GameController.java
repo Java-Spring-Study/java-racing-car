@@ -1,7 +1,9 @@
 package racingcar.gameController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.Car;
 import racingcar.tool.RacingTool;
 import racingcar.tool.TextPrinter;
@@ -38,9 +40,9 @@ public class GameController {
   }
 
   public void setCarList(String[] carNameList) {
-    for (int i = 0; i < carNameList.length; i++) {
-      carList.add(new Car(carNameList[i]));
-    }
+    Arrays.stream(carNameList).map((carName) -> carList.add(new Car(carName)))
+        .collect(Collectors.toList());
+
   }
 
   public void runRounds() {
@@ -58,21 +60,11 @@ public class GameController {
 
   public void pickWinners() {
     int maxPosition = getMaxPosition();
-    for (int i = 0; i < carList.size(); i++) {
-      if (carList.get(i).getPosition() == maxPosition) {
-        winnerList.add(carList.get(i).getName());
-      }
-    }
+    winnerList = carList.stream().filter(car -> car.getPosition() == maxPosition)
+        .map(car -> car.getName()).collect(Collectors.toList());
   }
 
   public int getMaxPosition() {
-    int max = 0, pos;
-    for (int i = 0; i < carList.size(); i++) {
-      pos = carList.get(i).getPosition();
-      if (pos > max) {
-        max = pos;
-      }
-    }
-    return max;
+    return carList.stream().mapToInt(car -> car.getPosition()).max().getAsInt();
   }
 }
