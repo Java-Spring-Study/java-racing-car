@@ -19,20 +19,16 @@ public class GamePlay {
     }
 
     public void printWinner(List<Car> carList) {
-        int winnerPosition = -1;
-        for (Car car : carList) {
-            if (car.getCarPosition() >= winnerPosition) {
-                winnerPosition = car.getCarPosition();
-            }
-        }
+        int winnerPosition = carList.stream()
+                .map(Car::getCarPosition)
+                .reduce(Integer::max)
+                .orElse(-1);
 
-        List<String> winners = new ArrayList<>();
-        for (Car car : carList) {
-            if (car.getCarPosition() == winnerPosition) {
-                winners.add(car.getCarName());
-            }
-        }
-        System.out.print(winners.stream().collect(Collectors.joining(", ")));
+        System.out.print(carList.stream()
+                .filter(car -> car.getCarPosition() == winnerPosition)
+                .map(car -> car.getCarName())
+                .collect(Collectors.joining(", ")));
+
         System.out.println("가 최종 우승했습니다.");
     }
 }

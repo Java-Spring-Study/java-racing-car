@@ -41,7 +41,7 @@ public class Main {
 
 
         return Arrays.stream(inputCarName.split(","))
-                .map(name -> new Car(name))
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 }
