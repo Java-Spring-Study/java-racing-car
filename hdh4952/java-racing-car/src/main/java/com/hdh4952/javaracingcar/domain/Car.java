@@ -1,10 +1,11 @@
 package com.hdh4952.javaracingcar.domain;
 
 public class Car {
+
   final private String name;
   private int moveCount;
 
-  Car(String name) {
+  public Car(String name) {
     this.name = name;
     moveCount = 0;
   }
