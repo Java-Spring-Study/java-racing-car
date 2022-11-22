@@ -1,22 +1,23 @@
 package com.llddang.javaracingcar.domain;
 
 public class Car {
+
   private String name;
   private StringBuilder movement = new StringBuilder("");
 
-  public Car(String name){
+  public Car(String name) {
     this.name = name;
   }
 
-  public void MoveOneStep(){
+  public void MoveOneStep() {
     movement.append("-");
   }
 
-  public String getMovement(){
+  public String getMovement() {
     return movement.toString();
   }
 
-  public String getName(){
+  public String getName() {
     return name;
   }
 }
